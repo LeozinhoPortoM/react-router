@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -45,7 +45,7 @@ export const useFetch = (url) => {
         setData(json);
       } catch (error) {
         console.log(error.message);
-        toast.error("Erro ao carregar a página")
+        // toast.error("Erro ao carregar a página")
       }
 
       setLoading(false);
@@ -63,10 +63,10 @@ export const useFetch = (url) => {
 
           const res = await fetch(...fetchOptions);
           json = await res.json();
-          toast.success("Salvo com sucesso");
+          // toast.success("Salvo com sucesso");
         } catch (error) {
           console.log(error.message);
-          toast.error("Erro ao salvar");
+          // toast.error("Erro ao salvar");
         }
       }
       if (method === "DELETE") {
@@ -74,9 +74,9 @@ export const useFetch = (url) => {
           const deleteUrl = `${url}/${itemId}`;
           const res = await fetch(deleteUrl, config);
           json = await res.json();
-          toast.success("Deletado com sucesso");
+          // toast.success("Deletado com sucesso");
         } catch (error) {
-          toast.error("Erro ao deletar");
+          // toast.error("Erro ao deletar");
         }
       }
       setCallFetch(json);
