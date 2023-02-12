@@ -13,6 +13,8 @@ export const useFetch = (url) => {
   const [itemId, setItemId] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState(null);
+
   const httpConfig = (data, method) => {
     if (method === "POST") {
       setConfig({
@@ -43,6 +45,9 @@ export const useFetch = (url) => {
         const res = await fetch(url);
         const json = await res.json();
         setData(json);
+        if(json.length === 0){
+          setError("Produto não encontrado!");
+        }
       } catch (error) {
         console.log(error.message);
         // toast.error("Erro ao carregar a página")
@@ -85,5 +90,5 @@ export const useFetch = (url) => {
     httpRequest();
   }, [config, method, url, itemId]);
 
-  return { data, httpConfig, loading };
+  return { data, httpConfig, loading, error };
 };
