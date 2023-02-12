@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 const url = "http://localhost:3000/products";
 
 export default function Home() {
-  const { data: items, loading } = useFetch(url);
+  const { data: items } = useFetch(url);
 
   return (
     <div>
